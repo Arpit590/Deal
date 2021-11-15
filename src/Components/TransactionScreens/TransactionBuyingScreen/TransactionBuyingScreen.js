@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     },
     container:{
         alignItems:"center",
-        width:"100%"
+        width:"100%",
     },
     button:{
         flex:1,
@@ -103,24 +103,25 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         alignItems:"center",
         justifyContent:"center",
-        marginVertical:12,
+        backgroundColor:"white",
+        width:"100%"
     },
     activeOption:{
         paddingHorizontal:22,
         paddingVertical:10,
-        backgroundColor:colors.primary,
-        borderWidth:1,
-        borderColor:colors.primary
+        borderBottomColor:colors.primary,
+        borderBottomWidth:2,
+        backgroundColor:"white"
     },
     option:{
         paddingHorizontal:22,
         paddingVertical:10,
-        backgroundColor:colors.secondary,
-        borderWidth:1,
-        borderColor:colors.borderColor
+        backgroundColor:"white",
+        borderBottomWidth:2,
+        borderBottomColor:"transparent"
     },
     activeText:{
-        color:"#FEFEFE",
+        color: colors.primary,
          fontSize:fontSize.h5,
          fontWeight:"400"
     },

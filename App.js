@@ -11,6 +11,7 @@ import TransactionSellingScreen from './src/Components/TransactionScreens/Transa
 import MyEarningsScreen from './src/Components/TransactionScreens/MyEarningsScreen/MyEarningsScreen';
 import ElectricSpares from './src/Components/TransactionScreens/ElectricSparesScreen.js/ElectricSpares';
 import ClaimForm from './src/Components/TransactionScreens/ClaimForm';
+import DetailsScreen from './src/Components/DetailsScreen/DetailsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +30,13 @@ export default function App() {
           <Stack.Screen
           name="TransactionSelling"
           component={TransactionSellingScreen}
+          options={{
+            headerShown:false
+          }}
+          />
+          <Stack.Screen
+          name="Details"
+          component={DetailsScreen}
           options={{
             headerShown:false
           }}

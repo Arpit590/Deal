@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { colors, fontFamily } from '../../commonStyle'
 import {Entypo} from "react-native-vector-icons";
 import { useNavigation } from '@react-navigation/core';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { addTransactionState } from '../../Store/actions';
+
+const {width, height} = Dimensions.get("window");
 
 
 const TransactionOptions = ({text, price, priceColor, size, filterText}) => {
@@ -15,7 +17,7 @@ const TransactionOptions = ({text, price, priceColor, size, filterText}) => {
 
 
     const navigationHandler=()=>{
-        navigation.navigate("MyEarnings")
+        navigation.navigate("Details")
         dispatch(addTransactionState(
             {
                 text: text,
@@ -32,9 +34,11 @@ const TransactionOptions = ({text, price, priceColor, size, filterText}) => {
     return (
         <TouchableOpacity activeOpacity={0.8} style={styles.container}
         onPress={navigationHandler}> 
-            <Text style={{color: colors.textPrimary, maxWidth:160, fontSize: size, fontWeight:"600", fontFamily:fontFamily.primaryBold}}
-            numberOfLines={1}
-            >{text}</Text>
+            <View style={{flexDirection:"row", alignItems:"center"}}>
+                <Text style={{marginRight:10,color: colors.textPrimary, maxWidth:160, fontSize: size, fontWeight:"600", fontFamily:fontFamily.primaryBold}}
+                numberOfLines={1}
+                >{text}</Text>
+            </View>
             <View style={styles.price}>
                 <Text style={{color: priceColor, fontSize: size, fontWeight:"600", fontFamily:fontFamily.primaryBold}}>${price}</Text>
                 <View style={{backgroundColor:"#EDEDED", height:20, width:20, borderRadius:10, marginLeft:15}}>
@@ -64,7 +68,7 @@ const styles = StyleSheet.create({
         justifyContent:"space-between",
         marginBottom:10,
         height:60,
-        width:335
+        width:width-20
     },
     price:{
         flexDirection:"row",

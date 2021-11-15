@@ -2,7 +2,7 @@ import React from 'react'
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { colors, fontFamily, fontSize } from '../../../commonStyle'
 import {AntDesign, MaterialIcons} from "react-native-vector-icons";
-import { useNavigation, useRoute } from '@react-navigation/core';
+import { useNavigation} from '@react-navigation/core';
 import { useSelector } from 'react-redux';
 
 const MyEarningsHeader = () => {
