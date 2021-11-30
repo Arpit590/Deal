@@ -3,6 +3,7 @@ import { StyleSheet, View, TouchableOpacity, Text } from 'react-native'
 import { colors, fontSize, fontFamily} from '../../../commonStyle'
 import TransactionHeader from '../TransactionHeader'
 import TransactionOptions from '../TransactionOptions'
+import TransactionTab from '../TransactionTab'
 
 const TransactionBuyingScreen = () => {
 
@@ -104,7 +105,8 @@ const styles = StyleSheet.create({
         alignItems:"center",
         justifyContent:"center",
         backgroundColor:"white",
-        width:"100%"
+        width:"100%",
+        marginBottom:20
     },
     activeOption:{
         paddingHorizontal:22,

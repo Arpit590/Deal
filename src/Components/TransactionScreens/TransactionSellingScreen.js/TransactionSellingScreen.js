@@ -104,7 +104,8 @@ const styles = StyleSheet.create({
         alignItems:"center",
         justifyContent:"center",
         backgroundColor:"white",
-        width:"100%"
+        width:"100%",
+        marginBottom:20
     },
     activeOption:{
         paddingHorizontal:22,
