@@ -1,59 +1,122 @@
-import React from 'react'
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import {MaterialIcons, Feather, Ionicons} from "react-native-vector-icons";
-import { colors, fontFamily, fontSize } from '../../commonStyle';
-import TransactionTab from './TransactionTab';
-import Svg, {Path, G} from "react-native-svg"
+import React, { useState } from 'react'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { colors, fontFamily, fontSize } from '../../commonStyle'
+import AntDesign from "react-native-vector-icons/AntDesign";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { useNavigation } from '@react-navigation/core';
+import MaterialIcons from "react-native-vector-icons/MaterialIcons"
 
+const TransactionHeader = ({active, logo, headingText}) => {
 
-const TransactionHeader = () => {
+    const [click, setClick] = useState("Buying");
+    const navigation = useNavigation();
+
+    const buyingHandler=()=>{
+        setClick("Buying");
+        navigation.navigate("Buying");
+    }
+
+    const sellingHandler=()=>{
+        setClick("Selling");
+        navigation.navigate("Selling");
+    }
+
     return (
-        <View style={styles.header}>
+        <View style={styles.container1}>
+            {logo ? 
             <View style={styles.view1}>
                 <View style={{flexDirection:"row", alignItems:"center"}}>
                     <Image
-                    source={require("../../assets/logo.png")}
-                    style={{resizeMode:"contain", height:30, width:30}}
+                    source={require("../../../assets/logo.png")}
+                    style={{height:30, width:30, resizeMode:"contain",marginRight:10}}
                     />
-                    <Text style={{marginHorizontal:5,fontSize:23, color:"#1A1A1A", fontFamily: fontFamily.primaryBold}}>worldref</Text>
+                    <Text style={{fontSize:fontSize.text, fontFamily: fontFamily.primaryBold, color: "#1A1A1A"}}>worldref</Text>
                     <Image
-                    source={require("../../assets/dealx.png")}
-                    style={{resizeMode:"contain", height:70, width:70, marginTop:5}}
+                    source={require("../../../assets/dealx.png")}
+                    style={{height:70, width:70, resizeMode:"contain", marginTop:8}}
                     />
                 </View>
                 <View style={{flexDirection:"row", alignItems:"center"}}>
-                <TouchableOpacity activeOpacity={0.8}>
-                    <Svg fill="#000000" xmlns="http://www.w3.org/2000Ssvg" 
-                    viewBox="0 0 50 50" width={25} height={25}>
-                        <Path d="M 21 3 C 11.621094 3 4 10.621094 4 20 C 4 29.378906 11.621094 37 21 37 C 24.710938 37 28.140625 35.804688 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460938 28.085938 38 24.222656 38 20 C 38 10.621094 30.378906 3 21 3 Z M 21 5 C 29.296875 5 36 11.703125 36 20 C 36 28.296875 29.296875 35 21 35 C 12.703125 35 6 28.296875 6 20 C 6 11.703125 12.703125 5 21 5 Z"/>
-                    </Svg>
-                </TouchableOpacity>
-                <TouchableOpacity activeOpacity={0.8} style={{marginHorizontal:20}}>
-                    <Ionicons
-                    name="notifications-outline"
+                    <TouchableOpacity activeOpacity={0.8}
+                    >
+                    <AntDesign
+                    name="search1"
                     size={30}
-                    color="#000000"
+                    color={colors.textPrimary}
                     />
-                    <View style={{position:"absolute",right:0,backgroundColor:"#FA0000", width:15, height:15, borderRadius:10, alignItems:"center", justifyContent:"center"}}>
-                        <Text style={{fontFamily: fontFamily.primaryRegular, fontSize:14, color:"#FFFFFF"}}>4</Text>
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity activeOpacity={0.8}>
-                    <Image
-                    source={require("../../assets/Avatar.png")}
-                    style={{height:30, width:30, resizeMode:"contain"}}
-                    />
-                </TouchableOpacity>
+                    </TouchableOpacity>
+                    <TouchableOpacity activeOpacity={0.8} style={styles.notification}>
+                        <Ionicons
+                        name="notifications-outline"
+                        color={colors.textPrimary}
+                        size={30}
+                        />
+                        <View style={{width:15, height:15,alignItems:"center", justifyContent:"center",backgroundColor:"#FA0000", padding:3, borderRadius:45, position:"absolute", right: 0}}>
+                            <Text style={{fontSize:fontSize.h7, fontFamily:fontFamily.primaryRegular, color:colors.secondary}}>4</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity activeOpacity={0.8}>
+                        <Image 
+                        source={require("../../../assets/Avatar.png")}
+                        style={{height:30, width:30, resizeMode:"contain"}}
+                        />
+                    </TouchableOpacity>
                 </View>
             </View>
-            <View style={{alignItems:"flex-start"}}>
-            <TransactionTab
-            text1="Buying"
-            Tab1="TransactionBuying"
-            text2="Selling"
-            Tab2="TransactionSelling"
-            />
+            :
+            <View style={styles.view1}>
+                <View style={{flexDirection:"row", alignItems:"center"}}>
+                    <TouchableOpacity activeOpacity={0.8} onPress={()=>navigation.goBack()}>
+                        <MaterialIcons
+                        name="arrow-back-ios"
+                        size={24}
+                        color={colors.primary}
+                        />
+                    </TouchableOpacity>
+                    <Text style={{fontFamily: fontFamily.primaryBold, fontSize:18, color:colors.textPrimary}}>{headingText}</Text>
+                </View>
+                <View style={{flexDirection:"row", alignItems:"center"}}>
+                    <TouchableOpacity activeOpacity={0.8}
+                    >
+                    <AntDesign
+                    name="search1"
+                    size={30}
+                    color={colors.textPrimary}
+                    />
+                    </TouchableOpacity>
+                    <TouchableOpacity activeOpacity={0.8} style={styles.notification}>
+                        <Ionicons
+                        name="notifications-outline"
+                        color={colors.textPrimary}
+                        size={30}
+                        />
+                        <View style={{width:15, height:15,alignItems:"center", justifyContent:"center",backgroundColor:"#FA0000", padding:3, borderRadius:45, position:"absolute", right: 0}}>
+                            <Text style={{fontSize:fontSize.h7, fontFamily:fontFamily.primaryRegular, color:colors.secondary}}>4</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity activeOpacity={0.8}>
+                        <Image 
+                        source={require("../../../assets/Avatar.png")}
+                        style={{height:30, width:30, resizeMode:"contain"}}
+                        />
+                    </TouchableOpacity>
+                </View>
             </View>
+            }
+            {active && 
+            <View style={styles.view2}>
+                <TouchableOpacity activeOpacity={0.8} 
+                onPress={buyingHandler}
+                style={(click==="Buying") ? styles.activeBox :styles.box}>
+                    <Text style={(click==="Buying") ? styles.activeText :styles.text}>Buying</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={(click==="Selling") ? styles.activeBox :styles.box}
+                onPress={sellingHandler}
+                >
+                    <Text style={(click==="Selling") ? styles.activeText :styles.text}>Selling</Text>
+                </TouchableOpacity>
+            </View>
+            }
         </View>
     )
 }
@@ -61,24 +124,48 @@ const TransactionHeader = () => {
 export default TransactionHeader
 
 const styles = StyleSheet.create({
-    header:{
-        backgroundColor:"white",
-        padding:22,
-        width:"100%" ,
-        marginTop:-20
+    container:{
+        backgroundColor:colors.secondary,
+        padding:20,
+        marginTop:"-5%"
+    },
+    container1:{
+        backgroundColor:colors.secondary,
+        padding:30, 
     },
     view1:{
         flexDirection:"row",
         alignItems:"center",
         justifyContent:"space-between"
+    },
+    notification:{
+        flexDirection:"row",
+        marginHorizontal:20
+    },
+    view2:{
+        flexDirection:"row",
+        alignItems:"center",
+    },
+    box:{
+        backgroundColor:colors.secondary,
+        paddingVertical:10,
+        paddingHorizontal:30,
+        elevation:4,
+    },
+    activeBox:{
+        backgroundColor:colors.primary,
+        paddingVertical:10,
+        paddingHorizontal:30,
+        elevation:4,
+    },
+    text:{
+        fontSize:fontSize.h5,
+        fontFamily:fontFamily.primaryRegular,
+        color:colors.textPrimary
+    },
+    activeText:{
+        fontSize:fontSize.h5,
+        fontFamily:fontFamily.primaryRegular,
+        color:colors.secondary
     }
-    // filter:{
-    //     backgroundColor:"#F3F3F3",
-    //     borderRadius:3,
-    //     flexDirection:"row",
-    //     alignItems:"center",
-    //     paddingVertical:14,
-    //     paddingHorizontal:15,
-    //     marginLeft:23,
-    // }
 })

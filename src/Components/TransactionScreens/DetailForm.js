@@ -1,11 +1,11 @@
 import { useNavigation, useRoute } from '@react-navigation/core'
 import React, { useState } from 'react'
-import { StyleSheet, Text, TouchableOpacity, View, CheckBox } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, CheckBox, ScrollView } from 'react-native'
 import { colors, fontFamily, fontSize } from '../../commonStyle'
 import TransactionHeader from './TransactionHeader'
 import AntDesign from "react-native-vector-icons/AntDesign"
 
-const ClaimForm = () => {
+const DetailForm = () => {
 
     const navigation = useNavigation();
     const route = useRoute();
@@ -14,12 +14,36 @@ const ClaimForm = () => {
     return (
         <View style={styles.screen}>
             <TransactionHeader
-            headingText="Claim Success Fee"
+            headingText="Fee Claim Details"
             />
-            <View style={styles.content}>
-                <View style={{flexDirection:"row",alignItems:"center", marginBottom:20}}>
-                    <Text style={{fontSize:fontSize.h1, fontFamily:fontFamily.primaryBold, color:colors.textPrimary}}>Claim Form |</Text>
-                    <Text style={{fontSize:fontSize.h1, fontFamily:fontFamily.primaryBold, color:colors.primary}}> {route.params.price}</Text>
+            <ScrollView showsVerticalScrollIndicator={false} style={styles.content}>
+                <View style={{flexDirection:"row",alignItems:"flex-start", marginBottom:20, justifyContent:"space-between"}}>
+                    <View>
+                        <Text style={{fontSize:fontSize.h1, fontFamily:fontFamily.primaryBold, color: colors.textPrimary, marginBottom:3}}>John Doe</Text>
+                        <View style={{flexDirection:"row", alignItems:"center"}}>
+                            <Text style={{fontFamily:fontFamily.primaryBold, fontSize:fontSize.h5, color:colors.textPrimary}}>Associate ID | </Text>
+                            <Text style={{fontSize:fontSize.h5, fontFamily:fontFamily.primary, color:colors.textPrimary}}>211532315</Text>
+                        </View>
+                    </View>
+                    <Text style={{fontFamily:fontFamily.primary, fontSize:fontSize.h5, color:"#1A1A1A"}}>10 Oct 2021</Text>
+                </View>
+                <View style={styles.view}>
+                    <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between", marginBottom:10}}>
+                        <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>Email</Text>
+                        <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>john1234@gmail.com</Text>
+                    </View>
+                    <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between", marginBottom:10}}>
+                        <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>National ID</Text>
+                        <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>Passport, 1463246</Text>
+                    </View>
+                    <View style={{flexDirection:"row", alignItems:"flex-start",justifyContent:"space-between", marginBottom:10}}>
+                        <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>Address</Text>
+                        <View>
+                            <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>Address Line 1</Text>
+                            <Text style={{marginVertical:10,fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>Address Line 2</Text>
+                            <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>Address Line 3</Text>
+                        </View>
+                    </View>
                 </View>
                 <View style={styles.view}>
                     <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between", marginBottom:10}}>
@@ -27,6 +51,10 @@ const ClaimForm = () => {
                         <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>10 June 2021</Text>
                     </View>
                     <Text style={{fontFamily:fontFamily.primaryRegular, fontSize:fontSize.h3, color:"#1A1A1A", marginTop:5}}>Requirement of Electrical Spares at Surabaya for Hydro Plant</Text>
+                    <View style={{flexDirection:"row", alignItems:"center", marginTop:10}}>
+                        <Text style={{fontSize:fontSize.h3, fontFamily:fontFamily.primaryBold, color:colors.textPrimary}}>Amount Claimed</Text>
+                        <Text style={{fontFamily:fontFamily.primaryBold, fontSize:fontSize.h1, color:colors.primary, marginLeft:16}}>USD 25000.00</Text>
+                    </View>
                 </View>
                 <View style={styles.view}>
                     <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between", marginBottom:10}}>
@@ -53,14 +81,6 @@ const ClaimForm = () => {
                         <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>SWIFT Code</Text>
                         <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>ABCD00012345</Text>
                     </View>
-                    <TouchableOpacity activeOpacity={0.8} style={styles.edit}>
-                        <AntDesign
-                        name="edit"
-                        color={colors.primary}
-                        size={20}
-                        />
-                        <Text style={{fontSize:fontSize.h4, color:colors.primary, fontFamily:fontFamily.primaryRegular, fontWeight:"700", marginLeft:10}}>Edit</Text>
-                    </TouchableOpacity>
                 </View>
                 <View style={styles.checkbox}>
                     <CheckBox
@@ -75,12 +95,12 @@ const ClaimForm = () => {
                         <Text style={{fontFamily:fontFamily.primaryBold, fontSize:fontSize.h1, color:colors.secondary, textAlign:"center"}}>Submit Form</Text>
                     </TouchableOpacity>
                 </View>
-            </View>
+            </ScrollView>
         </View>
     )
 }
 
-export default ClaimForm
+export default DetailForm
 
 const styles = StyleSheet.create({
     screen:{
@@ -111,7 +131,7 @@ const styles = StyleSheet.create({
         marginVertical:10
     },
     checkbox:{
-        marginVertical:40,
+        marginVertical:20,
         flexDirection:"row",
         alignItems:"flex-start",
         paddingHorizontal:10
