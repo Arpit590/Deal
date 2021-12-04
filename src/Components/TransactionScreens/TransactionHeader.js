@@ -151,12 +151,14 @@ const styles = StyleSheet.create({
         paddingVertical:10,
         paddingHorizontal:30,
         elevation:4,
+        borderRadius:3
     },
     activeBox:{
         backgroundColor:colors.primary,
         paddingVertical:10,
         paddingHorizontal:30,
         elevation:4,
+        borderRadius:3
     },
     text:{
         fontSize:fontSize.h5,

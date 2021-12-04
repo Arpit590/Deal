@@ -82,18 +82,27 @@ const DetailForm = () => {
                         <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>ABCD00012345</Text>
                     </View>
                 </View>
-                <View style={styles.checkbox}>
-                    <CheckBox
-                    disabled= {false}
-                    value={checkbox}
-                    onValueChange={(newValue)=>setCheckbox(newValue)}
-                    />
-                    <Text style={{fontSize:fontSize.h5, fontFamily:fontFamily.primaryBold, color:colors.textPrimary, maxWidth:300, marginLeft:20}}>I hereby declare that the information provided above is correct. WorldRef shall not be held accountable for any loss of the payment due to discrepancy or mistake in the above information or due to any bank related issue at my end. By checking the "I Agree" option I authorise WorldRef to generate an invoice on my behalf.</Text>
-                </View>
-                <View style={{alignItems:"center"}}>
-                    <TouchableOpacity activeOpacity={0.8} style={{width:"50%",backgroundColor:colors.primary, paddingVertical:10, borderRadius:3}}>
-                        <Text style={{fontFamily:fontFamily.primaryBold, fontSize:fontSize.h1, color:colors.secondary, textAlign:"center"}}>Submit Form</Text>
-                    </TouchableOpacity>
+                <View style={styles.view}>
+                    <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between", marginBottom:10}}>
+                        <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>Payment Method</Text>
+                        <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>Telegraphic Transfer</Text>
+                    </View>
+                    <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between", marginBottom:10}}>
+                        <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>Transaction ID</Text>
+                        <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>9156123599928</Text>
+                    </View>
+                    <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between", marginBottom:10}}>
+                        <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>Transaction Date</Text>
+                        <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>12 Dec 2021</Text>
+                    </View>
+                    <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between", marginBottom:10}}>
+                        <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>From Bank</Text>
+                        <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>Bank XYZ, India</Text>
+                    </View>
+                    <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between", marginBottom:10}}>
+                        <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>Transaction Amount</Text>
+                        <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>USD 25,000</Text>
+                    </View>
                 </View>
             </ScrollView>
         </View>
@@ -115,7 +124,7 @@ const styles = StyleSheet.create({
         backgroundColor:colors.secondary,
         padding:10,
         borderRadius:3,
-        marginBottom:20,
+        marginBottom:30,
         paddingHorizontal:20
     },
     edit:{

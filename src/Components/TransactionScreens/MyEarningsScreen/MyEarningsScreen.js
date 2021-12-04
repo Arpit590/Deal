@@ -47,7 +47,7 @@ const MyEarningsScreen = () => {
                             color={colors.secondary}
                             />
                         </View>
-                        {((transaction.title==="Total Success Fee") || (transaction.title==="Success Fee Paid") )
+                        {((transaction.title==="Total Success Fee") || (transaction.title==="Success Fee Paid"))
                         && 
                         <View style={{marginLeft:10}}>
                             <View style={styles.filter}>
@@ -61,7 +61,7 @@ const MyEarningsScreen = () => {
                         </View>
                         }
                     </View>
-                    {((transaction.title==="Total Success Fee") || (transaction.title==="Success Fee Not Paid") )
+                    {((transaction.title==="Total Success Fee") || (transaction.title==="Success Fee Not Paid"))
                         && 
                         <View style={styles.filter1}>
                             <Text style={{fontSize:fontSize.h5, color:colors.secondary, marginRight:3}}>Success Fee Not Paid</Text>
