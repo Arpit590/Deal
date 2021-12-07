@@ -71,7 +71,9 @@ const ClaimForm = () => {
                     <Text style={{fontSize:fontSize.h5, fontFamily:fontFamily.primaryBold, color:colors.textPrimary, maxWidth:300, marginLeft:20}}>I hereby declare that the information provided above is correct. WorldRef shall not be held accountable for any loss of the payment due to discrepancy or mistake in the above information or due to any bank related issue at my end. By checking the "I Agree" option I authorise WorldRef to generate an invoice on my behalf.</Text>
                 </View>
                 <View style={{alignItems:"center"}}>
-                    <TouchableOpacity activeOpacity={0.8} style={{width:"50%",backgroundColor:colors.primary, paddingVertical:10, borderRadius:3}}>
+                    <TouchableOpacity activeOpacity={0.8} style={{width:"50%",backgroundColor:colors.primary, paddingVertical:10, borderRadius:3}}
+                    onPress={()=>navigation.navigate("Detail Form")}
+                    >
                         <Text style={{fontFamily:fontFamily.primaryBold, fontSize:fontSize.h1, color:colors.secondary, textAlign:"center"}}>Submit Form</Text>
                     </TouchableOpacity>
                 </View>

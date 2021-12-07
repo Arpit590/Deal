@@ -82,26 +82,28 @@ const DetailForm = () => {
                         <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>ABCD00012345</Text>
                     </View>
                 </View>
-                <View style={styles.view}>
-                    <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between", marginBottom:10}}>
-                        <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>Payment Method</Text>
-                        <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>Telegraphic Transfer</Text>
-                    </View>
-                    <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between", marginBottom:10}}>
-                        <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>Transaction ID</Text>
-                        <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>9156123599928</Text>
-                    </View>
-                    <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between", marginBottom:10}}>
-                        <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>Transaction Date</Text>
-                        <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>12 Dec 2021</Text>
-                    </View>
-                    <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between", marginBottom:10}}>
-                        <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>From Bank</Text>
-                        <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>Bank XYZ, India</Text>
-                    </View>
-                    <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between", marginBottom:10}}>
-                        <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>Transaction Amount</Text>
-                        <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>USD 25,000</Text>
+                <View style={{marginBottom:30}}>
+                    <View style={styles.view}>
+                        <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between", marginBottom:10}}>
+                            <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>Payment Method</Text>
+                            <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>Telegraphic Transfer</Text>
+                        </View>
+                        <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between", marginBottom:10}}>
+                            <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>Transaction ID</Text>
+                            <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>9156123599928</Text>
+                        </View>
+                        <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between", marginBottom:10}}>
+                            <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>Transaction Date</Text>
+                            <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>12 Dec 2021</Text>
+                        </View>
+                        <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between", marginBottom:10}}>
+                            <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>From Bank</Text>
+                            <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>Bank XYZ, India</Text>
+                        </View>
+                        <View style={{flexDirection:"row", alignItems:"center",justifyContent:"space-between", marginBottom:10}}>
+                            <Text style={{fontSize:fontSize.h5, fontWeight:"700", fontFamily:fontFamily.primaryRegular, color:"#1A1A1A"}}>Transaction Amount</Text>
+                            <Text style={{fontSize:fontSize.h5, fontWeight:"600", fontFamily:fontFamily.primaryRegular, color:"#717171"}}>USD 25,000</Text>
+                        </View>
                     </View>
                 </View>
             </ScrollView>

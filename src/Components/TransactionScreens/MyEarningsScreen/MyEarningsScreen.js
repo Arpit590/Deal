@@ -47,7 +47,7 @@ const MyEarningsScreen = () => {
                             color={colors.secondary}
                             />
                         </View>
-                        {((transaction.title==="Total Success Fee") || (transaction.title==="Success Fee Paid"))
+                        {(((transaction.title==="Total Success Fee") || (transaction.title==="Success Fee Paid")))
                         && 
                         <View style={{marginLeft:10}}>
                             <View style={styles.filter}>
@@ -61,7 +61,8 @@ const MyEarningsScreen = () => {
                         </View>
                         }
                     </View>
-                    {((transaction.title==="Total Success Fee") || (transaction.title==="Success Fee Not Paid"))
+                    <View style={{flexDirection:"row", alignItems:"center"}}>
+                        {((transaction.title==="Total Success Fee") || (transaction.title==="Success Fee Not Paid"))
                         && 
                         <View style={styles.filter1}>
                             <Text style={{fontSize:fontSize.h5, color:colors.secondary, marginRight:3}}>Success Fee Not Paid</Text>
@@ -72,6 +73,27 @@ const MyEarningsScreen = () => {
                             />
                         </View>
                         }
+                        {(transaction.filterText==="Selling" && buying)
+                        &&
+                        <View style={styles.filter2}>
+                            <Text style={{fontSize:fontSize.h5, color:colors.secondary, marginRight:3}}>Buying</Text>
+                            <AntDesign
+                            name="close"
+                            size={15}
+                            color={colors.secondary}
+                            />
+                        </View>}
+                        {(transaction.filterText==="Buying" && selling)
+                        &&
+                        <View style={styles.filter2}>
+                            <Text style={{fontSize:fontSize.h5, color:colors.secondary, marginRight:3}}>Selling</Text>
+                            <AntDesign
+                            name="close"
+                            size={15}
+                            color={colors.secondary}
+                            />
+                        </View>}
+                    </View>
                 </View>
                 <TouchableOpacity
                  onPress={()=>setIsOpen(true)}
@@ -151,15 +173,16 @@ const MyEarningsScreen = () => {
                                 <View style={styles.checkbox}>
                                     <Text style={{fontSize:fontSize.text, fontWeight:"400", fontFamily:fontFamily.primaryRegular, color:"#5A5A5A"}}>Buying Role</Text>
                                     <CheckBox
-                                    disabled= {false}
+                                    disabled={false}
                                     value={buying}
                                     onValueChange={(newValue)=>setBuying(newValue)}
+
                                     />
                                 </View>
                                 <View style={styles.checkbox}>
                                     <Text style={{fontSize:fontSize.text, fontWeight:"400", fontFamily:fontFamily.primaryRegular, color:"#5A5A5A"}}>Selling Role</Text>
                                     <CheckBox
-                                    disabled= {false}
+                                    disabled={false}
                                     value={selling}
                                     onValueChange={(newValue)=>setSelling(newValue)}
                                     />
@@ -203,14 +226,25 @@ const styles = StyleSheet.create({
     },
     filter1:{
         backgroundColor: colors.primary,
-        paddingHorizontal:15,
+        paddingHorizontal:13,
         paddingVertical:5,
         borderRadius:25,
         flexDirection:"row",
         alignItems:"center",
         justifyContent:"space-between",
         marginTop:10,
-        width:200
+        width:180
+    },
+    filter2:{
+        backgroundColor: colors.primary,
+        paddingHorizontal:13,
+        paddingVertical:5,
+        borderRadius:25,
+        flexDirection:"row",
+        alignItems:"center",
+        justifyContent:"space-between",
+        marginTop:10,
+        width:100,marginLeft:5
     },
     view:{
         padding:15, 
