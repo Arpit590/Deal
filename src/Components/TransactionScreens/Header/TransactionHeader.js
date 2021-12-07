@@ -1,25 +1,15 @@
 import React, { useState } from 'react'
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { colors, fontFamily, fontSize } from '../../commonStyle'
+import { colors, fontFamily, fontSize } from '../../../commonStyle'
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useNavigation } from '@react-navigation/core';
 import MaterialIcons from "react-native-vector-icons/MaterialIcons"
 
-const TransactionHeader = ({active, logo, headingText}) => {
+const TransactionHeader = ({logo, headingText}) => {
 
-    const [click, setClick] = useState("Buying");
     const navigation = useNavigation();
 
-    const buyingHandler=()=>{
-        setClick("Buying");
-        navigation.navigate("Buying");
-    }
-
-    const sellingHandler=()=>{
-        setClick("Selling");
-        navigation.navigate("Selling");
-    }
 
     return (
         <View style={styles.container1}>
@@ -27,12 +17,12 @@ const TransactionHeader = ({active, logo, headingText}) => {
             <View style={styles.view1}>
                 <View style={{flexDirection:"row", alignItems:"center"}}>
                     <Image
-                    source={require("../../../assets/logo.png")}
+                    source={require("../../../../assets/logo.png")}
                     style={{height:30, width:30, resizeMode:"contain",marginRight:10}}
                     />
                     <Text style={{fontSize:fontSize.text, fontFamily: fontFamily.primaryBold, color: "#1A1A1A"}}>worldref</Text>
                     <Image
-                    source={require("../../../assets/dealx.png")}
+                    source={require("../../../../assets/dealx.png")}
                     style={{height:70, width:70, resizeMode:"contain", marginTop:8}}
                     />
                 </View>
@@ -57,7 +47,7 @@ const TransactionHeader = ({active, logo, headingText}) => {
                     </TouchableOpacity>
                     <TouchableOpacity activeOpacity={0.8}>
                         <Image 
-                        source={require("../../../assets/Avatar.png")}
+                        source={require("../../../../assets/Avatar.png")}
                         style={{height:30, width:30, resizeMode:"contain"}}
                         />
                     </TouchableOpacity>
@@ -96,25 +86,11 @@ const TransactionHeader = ({active, logo, headingText}) => {
                     </TouchableOpacity>
                     <TouchableOpacity activeOpacity={0.8}>
                         <Image 
-                        source={require("../../../assets/Avatar.png")}
+                        source={require("../../../../assets/Avatar.png")}
                         style={{height:30, width:30, resizeMode:"contain"}}
                         />
                     </TouchableOpacity>
                 </View>
-            </View>
-            }
-            {active && 
-            <View style={styles.view2}>
-                <TouchableOpacity activeOpacity={0.8} 
-                onPress={buyingHandler}
-                style={(click==="Buying") ? styles.activeBox :styles.box}>
-                    <Text style={(click==="Buying") ? styles.activeText :styles.text}>Buying</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={(click==="Selling") ? styles.activeBox :styles.box}
-                onPress={sellingHandler}
-                >
-                    <Text style={(click==="Selling") ? styles.activeText :styles.text}>Selling</Text>
-                </TouchableOpacity>
             </View>
             }
         </View>
@@ -131,7 +107,7 @@ const styles = StyleSheet.create({
     },
     container1:{
         backgroundColor:colors.secondary,
-        padding:30, 
+        padding:20, 
     },
     view1:{
         flexDirection:"row",
@@ -141,33 +117,5 @@ const styles = StyleSheet.create({
     notification:{
         flexDirection:"row",
         marginHorizontal:20
-    },
-    view2:{
-        flexDirection:"row",
-        alignItems:"center",
-    },
-    box:{
-        backgroundColor:colors.secondary,
-        paddingVertical:10,
-        paddingHorizontal:30,
-        elevation:4,
-        borderRadius:3
-    },
-    activeBox:{
-        backgroundColor:colors.primary,
-        paddingVertical:10,
-        paddingHorizontal:30,
-        elevation:4,
-        borderRadius:3
-    },
-    text:{
-        fontSize:fontSize.h5,
-        fontFamily:fontFamily.primaryRegular,
-        color:colors.textPrimary
-    },
-    activeText:{
-        fontSize:fontSize.h5,
-        fontFamily:fontFamily.primaryRegular,
-        color:colors.secondary
     }
 })

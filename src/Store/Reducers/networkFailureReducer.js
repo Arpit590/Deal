@@ -26,6 +26,8 @@ export const transactionState = (state={transaction: []}, action)=>{
     switch(action.type){
         case actionTypes.TRANSACTION_STATE:
             return {transaction : [action.payload]}
+        case actionTypes.FILTER_STATE:
+            return {transaction: [...state.transaction, action.payload]}
         default:
             return state;
     }

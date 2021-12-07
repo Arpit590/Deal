@@ -2,7 +2,7 @@ import { useNavigation, useRoute } from '@react-navigation/core'
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { colors, fontFamily, fontSize } from '../../../commonStyle'
-import TransactionHeader from '../TransactionHeader'
+import TransactionHeader from '../Header/TransactionHeader'
 import MaterialIcons from "react-native-vector-icons/MaterialIcons"
 import AntDesign from "react-native-vector-icons/AntDesign";
 

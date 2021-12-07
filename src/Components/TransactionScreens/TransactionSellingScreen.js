@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { colors, fontFamily, fontSize } from '../../commonStyle'
-import TransactionHeader from './TransactionHeader'
+import TransactionHeader from './Header/TransactionHeader'
 import TransactionOption from './TransactionOption'
 
 const TransactionSellingScreen = () => {

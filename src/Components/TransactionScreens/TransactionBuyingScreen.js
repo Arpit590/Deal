@@ -1,19 +1,31 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { colors, fontFamily, fontSize } from '../../commonStyle'
-import TransactionHeader from './TransactionHeader'
+import TransactionHeader from './Header/TransactionHeader'
 import TransactionOption from './TransactionOption'
 
 const TransactionBuyingScreen = () => {
 
     const [click, setClick] = useState("MyEarnings");
+    const [buying, setBuying] = useState(true)
 
     return (
         <View style={styles.screen}>
             <TransactionHeader
             logo
-            active
             />
+            <View style={styles.view2}>
+                <TouchableOpacity activeOpacity={0.8} 
+                onPress={()=>setBuying(true)}
+                style={(buying) ? styles.activeBox :styles.box}>
+                    <Text style={(buying) ? styles.activeText1 :styles.text}>Buying</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={(!buying) ? styles.activeBox :styles.box}
+                onPress={()=>setBuying(false)}
+                >
+                    <Text style={(!buying) ? styles.activeText1 :styles.text}>Selling</Text>
+                </TouchableOpacity>
+            </View>
             <View style={styles.view}>
                 <TouchableOpacity activeOpacity={0.8}
                 onPress={()=>setClick("MyEarnings")}
@@ -32,7 +44,7 @@ const TransactionBuyingScreen = () => {
                 </TouchableOpacity>
             </View>
             <View style={{paddingHorizontal:20, paddingVertical:20}}>
-                {(click==="MyEarnings") && 
+                {(click==="MyEarnings" && buying) &&
                 <>
                 <TransactionOption
                 title="Total Success Fee"
@@ -51,6 +63,28 @@ const TransactionBuyingScreen = () => {
                 color="#F2994A"
                 price="75,000"
                 filterText="Buying"
+                />
+                </>}
+                { (click=="MyEarnings" && !buying)
+                &&
+                <>
+                <TransactionOption
+                title="Total Success Fee"
+                color={colors.primary}
+                price="100,000"
+                filterText="Selling"
+                />
+                <TransactionOption
+                title="Success Fee Paid"
+                color="#27AE60"
+                price="50,000"
+                filterText="Selling"
+                />
+                <TransactionOption
+                title="Success Fee Not Paid"
+                color="#F2994A"
+                price="50,000"
+                filterText="Selling"
                 />
                 </>
                 }
@@ -105,5 +139,32 @@ const styles = StyleSheet.create({
         fontSize:fontSize.h4,
         fontFamily:fontFamily.primaryRegular,
         color:colors.primary
+    },
+    activeText1:{
+        fontSize:fontSize.h4,
+        fontFamily:fontFamily.primaryRegular,
+        color:colors.secondary
+    },
+    box:{
+        backgroundColor:colors.secondary,
+        paddingVertical:10,
+        paddingHorizontal:30,
+        elevation:4,
+        borderRadius:3
+    },
+    activeBox:{
+        backgroundColor:colors.primary,
+        paddingVertical:10,
+        paddingHorizontal:30,
+        elevation:4,
+        borderRadius:3
+    },
+    view2:{
+        flexDirection:"row",
+        alignItems:"center",
+        backgroundColor:colors.secondary,
+        paddingHorizontal:30,
+        paddingVertical:10,
+        marginTop:-20
     }
 })

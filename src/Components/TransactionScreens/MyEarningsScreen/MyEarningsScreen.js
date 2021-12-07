@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { Modal, StyleSheet, Text, TouchableOpacity, View, CheckBox } from 'react-native'
-import { useSelector } from 'react-redux'
+import { Modal, StyleSheet, Text, TouchableOpacity, View, CheckBox, ScrollView } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { colors, fontFamily, fontSize } from '../../../commonStyle'
-import TransactionHeader from '../TransactionHeader'
+import TransactionHeader from '../Header/TransactionHeader'
 import MyEarningDetails from './MyEarningDetails';
+import { addTransactionState} from '../../../Store/actions';
 
 const MyEarningsScreen = () => {
 
@@ -14,6 +15,7 @@ const MyEarningsScreen = () => {
     const [buying, setBuying]= useState(false)
     const [selling, setSelling]= useState(false)
     const [isOpen, setIsOpen] = useState(false);
+    const dispatch = useDispatch();
     const [transaction] = useSelector((state)=>state.transaction.transaction)
 
     const closeHandle=()=>{
@@ -29,6 +31,13 @@ const MyEarningsScreen = () => {
 
     const filterHandler=()=>{
         setIsOpen(false);
+        dispatch(addTransactionState({
+            "buying": buying,
+            "successFeePaid": successFeePaid,
+            "successFeeNotPaid": successFeeNotPaid,
+            "selling": selling
+        }))
+        console.log(transaction)
     }
 
     return (
@@ -39,15 +48,17 @@ const MyEarningsScreen = () => {
             <View style={styles.view}>
                 <View>
                     <View style={{flexDirection:"row", alignItems:"center"}}>
-                        <View style={styles.filter}>
-                            <Text style={{fontSize:fontSize.h5, color:colors.secondary, marginRight:3}}>{transaction.filterText}</Text>
+                        {   ((transaction.filterText==="Buying") || (buying))
+                                &&
+                            <View style={styles.filter}>
+                            <Text style={{fontSize:fontSize.h5, color:colors.secondary, marginRight:3}}>Buying</Text>
                             <AntDesign
                             name="close"
                             size={15}
                             color={colors.secondary}
                             />
-                        </View>
-                        {(((transaction.title==="Total Success Fee") || (transaction.title==="Success Fee Paid")))
+                        </View>}
+                        {(((transaction.title==="Total Success Fee") || (transaction.title==="Success Fee Paid") || (successFeePaid)))
                         && 
                         <View style={{marginLeft:10}}>
                             <View style={styles.filter}>
@@ -62,7 +73,7 @@ const MyEarningsScreen = () => {
                         }
                     </View>
                     <View style={{flexDirection:"row", alignItems:"center"}}>
-                        {((transaction.title==="Total Success Fee") || (transaction.title==="Success Fee Not Paid"))
+                        {((transaction.title==="Total Success Fee") || (transaction.title==="Success Fee Not Paid") || (successFeeNotPaid))
                         && 
                         <View style={styles.filter1}>
                             <Text style={{fontSize:fontSize.h5, color:colors.secondary, marginRight:3}}>Success Fee Not Paid</Text>
@@ -73,17 +84,7 @@ const MyEarningsScreen = () => {
                             />
                         </View>
                         }
-                        {(transaction.filterText==="Selling" && buying)
-                        &&
-                        <View style={styles.filter2}>
-                            <Text style={{fontSize:fontSize.h5, color:colors.secondary, marginRight:3}}>Buying</Text>
-                            <AntDesign
-                            name="close"
-                            size={15}
-                            color={colors.secondary}
-                            />
-                        </View>}
-                        {(transaction.filterText==="Buying" && selling)
+                        {(transaction.filterText==="Selling" || selling)
                         &&
                         <View style={styles.filter2}>
                             <Text style={{fontSize:fontSize.h5, color:colors.secondary, marginRight:3}}>Selling</Text>
@@ -106,31 +107,38 @@ const MyEarningsScreen = () => {
                     <Text style={{marginLeft:6, fontSize:11, fontFamily:fontFamily.primaryBold, color:colors.textPrimary}}>Filters</Text>
                 </TouchableOpacity>
             </View>
-            {(transaction.title==="Total Success Fee") && 
-            <View style={styles.view1}>
-                <MyEarningDetails
-                text="Success Fee Paid"
-                priceColor="#219653"
-                />
-                <MyEarningDetails
-                text="Success Fee Not Paid"
-                priceColor="#F2994A"
-                />
-            </View>}
-            {(transaction.title==="Success Fee Not Paid") && 
-            <View style={styles.view1}>
-                <MyEarningDetails
-                text="Success Fee Not Paid"
-                priceColor="#F2994A"
-                />
-            </View>}
-            {(transaction.title==="Success Fee Paid") && 
-            <View style={styles.view1}>
-                <MyEarningDetails
-                text="Success Fee Paid"
-                priceColor="#219653"
-                />
-            </View>}
+            <ScrollView showsVerticalScrollIndicator={false}>
+                {(transaction.title==="Total Success Fee" || transaction.successFeePaid) && 
+                <View style={styles.view1}>
+                    <MyEarningDetails
+                    text="Success Fee Paid"
+                    priceColor="#219653"
+                    />
+                </View>
+                }
+                {(transaction.title==="Total Success Fee" || transaction.successFeeNotPaid) && 
+                <View style={styles.view1}>
+                    <MyEarningDetails
+                    text="Success Fee Not Paid"
+                    priceColor="#F2994A"
+                    />
+                </View>
+                }
+                {(transaction.title==="Success Fee Not Paid" ||transaction.successFeeNotPaid) && 
+                <View style={styles.view1}>
+                    <MyEarningDetails
+                    text="Success Fee Not Paid"
+                    priceColor="#F2994A"
+                    />
+                </View>}
+                {(transaction.title==="Success Fee Paid" || transaction.successFeePaid) && 
+                <View style={styles.view1}>
+                    <MyEarningDetails
+                    text="Success Fee Paid"
+                    priceColor="#219653"
+                    />
+                </View>}
+            </ScrollView>
             <Modal
             animationType={"slide"}
             onRequestClose={closeHandle}
@@ -256,7 +264,7 @@ const styles = StyleSheet.create({
         borderBottomColor:colors.textPrimary
     },
     view1:{
-        marginVertical:30,
+        marginVertical:10,
         paddingHorizontal:20
     },
     modal:{
