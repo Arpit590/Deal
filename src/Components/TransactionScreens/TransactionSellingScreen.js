@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { colors, fontFamily, fontSize } from '../../commonStyle'
 import TransactionHeader from './Header/TransactionHeader'
 import TransactionOption from './TransactionOption'
@@ -14,7 +14,7 @@ const TransactionSellingScreen = () => {
             logo
             active
             />
-            <View style={styles.view}>
+            {/* <View style={styles.view}>
                 <TouchableOpacity activeOpacity={0.8}
                 onPress={()=>setClick("MyEarnings")}
                 style={(click==="MyEarnings")? styles.activeContainer : styles.container}>
@@ -30,7 +30,7 @@ const TransactionSellingScreen = () => {
                 activeOpacity={0.8} style={(click==="Invoices")? styles.activeContainer : styles.container}>
                     <Text style={(click==="Invoices")? styles.activeText : styles.text}>Invoices</Text>
                 </TouchableOpacity>
-            </View>
+            </View> */}
             <View style={{paddingHorizontal:20, paddingVertical:20}}>
                 <TransactionOption
                 title="Total Success Fee"
@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
         flex:1
     },
     view:{
-        paddingTop:15,
         backgroundColor:colors.secondary,
         flexDirection:"row",
         alignItems:"center",

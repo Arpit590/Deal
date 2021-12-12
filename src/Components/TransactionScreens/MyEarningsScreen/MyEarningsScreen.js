@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { Modal, StyleSheet, Text, TouchableOpacity, View, CheckBox, ScrollView } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import AntDesign from "react-native-vector-icons/AntDesign";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import {AntDesign, Ionicons} from "@expo/vector-icons"
 import { colors, fontFamily, fontSize } from '../../../commonStyle'
 import TransactionHeader from '../Header/TransactionHeader'
 import MyEarningDetails from './MyEarningDetails';

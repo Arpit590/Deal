@@ -1,9 +1,8 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { colors, fontFamily, fontSize } from '../../commonStyle'
-import Feather from "react-native-vector-icons/Feather";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons"
 import { useNavigation } from '@react-navigation/core';
+import {Feather, MaterialIcons} from "@expo/vector-icons"
 import { useDispatch } from 'react-redux';
 import { addTransactionState } from '../../Store/actions';
 

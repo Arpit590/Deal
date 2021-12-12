@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { colors, fontFamily, fontSize } from '../../../commonStyle'
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import {MaterialIcons} from "@expo/vector-icons"
 import { useNavigation } from '@react-navigation/core';
 
 

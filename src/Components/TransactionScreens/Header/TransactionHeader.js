@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { colors, fontFamily, fontSize } from '../../../commonStyle'
-import AntDesign from "react-native-vector-icons/AntDesign";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import {AntDesign, MaterialIcons, Ionicons} from "@expo/vector-icons"
 import { useNavigation } from '@react-navigation/core';
-import MaterialIcons from "react-native-vector-icons/MaterialIcons"
+import NotificationIcon from "../../../../assets/icons/icons8-notification.svg" 
 
 const TransactionHeader = ({logo, headingText}) => {
 
@@ -41,6 +40,9 @@ const TransactionHeader = ({logo, headingText}) => {
                         color={colors.textPrimary}
                         size={30}
                         />
+                        {/* <NotificationIcon
+                        height={40}
+                        /> */}
                         <View style={{width:15, height:15,alignItems:"center", justifyContent:"center",backgroundColor:"#FA0000", padding:3, borderRadius:45, position:"absolute", right: 0}}>
                             <Text style={{fontSize:fontSize.h7, fontFamily:fontFamily.primaryRegular, color:colors.secondary}}>4</Text>
                         </View>

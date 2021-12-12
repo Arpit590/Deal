@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/core'
 import React, { useState } from 'react'
-import { StyleSheet, Text, TouchableOpacity, View, CheckBox, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import { colors, fontFamily, fontSize } from '../../commonStyle'
 import TransactionHeader from './Header/TransactionHeader'
 

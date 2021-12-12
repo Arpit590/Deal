@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View, CheckBox } from 'react-native'
 import { colors, fontFamily, fontSize } from '../../commonStyle'
 import TransactionHeader from './Header/TransactionHeader'
-import AntDesign from "react-native-vector-icons/AntDesign"
+import {AntDesign} from "@expo/vector-icons"
 
 const ClaimForm = () => {
 

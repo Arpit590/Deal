@@ -14,7 +14,7 @@ const TransactionBuyingScreen = () => {
             <TransactionHeader
             logo
             />
-            <View style={styles.view2}>
+            {/* <View style={styles.view2}>
                 <TouchableOpacity activeOpacity={0.8} 
                 onPress={()=>setBuying(true)}
                 style={(buying) ? styles.activeBox :styles.box}>
@@ -25,7 +25,7 @@ const TransactionBuyingScreen = () => {
                 >
                     <Text style={(!buying) ? styles.activeText1 :styles.text}>Selling</Text>
                 </TouchableOpacity>
-            </View>
+            </View> */}
             <View style={styles.view}>
                 <TouchableOpacity activeOpacity={0.8}
                 onPress={()=>setClick("MyEarnings")}
@@ -111,7 +111,6 @@ const styles = StyleSheet.create({
         flex:1
     },
     view:{
-        paddingTop:15,
         backgroundColor:colors.secondary,
         flexDirection:"row",
         alignItems:"center",
